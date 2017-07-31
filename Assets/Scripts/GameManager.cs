@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour {
     public int score = 0;
     public int lives = 5;
 
+    public bool paused = false;
+    public GameObject pause_menu;
+
     // this is called before start
     private void Awake()
     {
@@ -27,14 +30,37 @@ public class GameManager : MonoBehaviour {
         // this will stop the manager from being destroyed on scene loads
         DontDestroyOnLoad(gameObject);
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if(paused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        if(Input.GetButtonDown("Start"))
+        {
+            if(paused)
+            {
+                paused = false;
+                pause_menu.SetActive(false);
+            }
+            else
+            {
+                paused = true;
+                pause_menu.SetActive(true);
+            }
+        }
 	}
+
+    public void unPause()
+    {
+        paused = false;
+        pause_menu.SetActive(false);
+    }
 }
