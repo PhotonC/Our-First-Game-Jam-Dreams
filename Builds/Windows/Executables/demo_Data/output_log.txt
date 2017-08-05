@@ -7,23 +7,23 @@ Direct3D:
     VRAM:     2020 MB
     Driver:   21.21.13.7654
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
-Loading C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\System.dll (this message is harmless)
-Platform assembly: C:\Users\Cassidy\Desktop\Executables\demo_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.102 seconds
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Cassidy\Desktop\Our First Game Jam\trunk\Builds\Windows\Executables\demo_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  3.557 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 4.070734 ms
+UnloadTime: 4.268902 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2254 -> priority: 1 
-  Thread -> id: 300c -> priority: 1 
+  Thread -> id: 14f4 -> priority: 1 
+  Thread -> id: 2310 -> priority: 1 

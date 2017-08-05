@@ -9,33 +9,44 @@ public class PlayerController : MonoBehaviour
     public float jump_speed;
     public float gravity;
     public float jump_delay;
+    public float tongue_length;
+
+    private GameObject game_manager;
 
     // this allows us to access the game camera
-    public Transform game_camera; 
+    private Transform game_camera; 
 
     // these are the player's components that will be accessed in this script
     private CharacterController char_controller;
+    private Animator animation_controller;
 
     private bool can_jump; // determines whether or not the player is allowed to jump
     private float vertical_velocity; // used for gravity and jumping
+    private Vector3 past_postion = new Vector3(0f, 0f, 0f);
+    private bool is_moving;
 
     private IEnumerator jumpDelay()
     {
-        yield return new WaitForSeconds(jump_delay);
+        yield return new WaitForSecondsRealtime(jump_delay);
         vertical_velocity += jump_speed;// make player jump
     }
 
     // start is called at the first frame; it's an initalization function
     void Start()
     {
+        game_manager = GameObject.Find("../DontDestroyOnLoad/Game Manager");
+        game_camera = GameObject.Find("Main Camera").transform;
+
         char_controller = GetComponent<CharacterController>();
+        char_controller.detectCollisions = true;
+        animation_controller = GetComponent<Animator>();
         can_jump = false;
+        is_moving = false;
     }
 
     // update is called at every frame; game code goes here
     void Update()
     {
-
         // these will grab input from the input manager
         float move_horizontal = Input.GetAxis("Horizontal");
         float move_vertical = Input.GetAxis("Vertical");
@@ -44,6 +55,12 @@ public class PlayerController : MonoBehaviour
         // this creates a Vector 3 to hold the directional forces input from the player
         Vector3 movement = new Vector3(move_horizontal, 0.0f, move_vertical);
         Vector3 future_position = new Vector3(0f, 0f, 0f);
+
+        // first check if the player is beyond the "death zone", and if so, "respawn" somewhere safe
+        if(transform.position.y < -10)
+        {
+            transform.position = Vector3.zero;
+        }
 
         // this prevents the player from speeding up while moving at a diagonal
         movement = Vector3.ClampMagnitude(movement, 1.0f);
@@ -67,7 +84,6 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(jumpDelay());
             }
-
         }
 
         movement.y = vertical_velocity * Time.deltaTime;
@@ -78,12 +94,14 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(future_position);
         }
 
+        past_postion = transform.position; // store past position right before moving
+
         // let's use Unity's built in movement for now; rigid bodies are intimidating
         // by setting collision_flags to this function, we can access... the collision flags when the player moves
         collision_flags = char_controller.Move(movement);
 
         // check if the player can jump
-        if((collision_flags & CollisionFlags.Below) != 0)
+        if ((collision_flags & CollisionFlags.Below) != 0)
         {
             can_jump = true;
             vertical_velocity = -3.0f; // this makes it so that the object will just move up and down slopes
@@ -91,6 +109,42 @@ public class PlayerController : MonoBehaviour
         else
         {
             can_jump = false;
+        }
+
+        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            is_moving = true;
+        }
+        else
+        {
+            is_moving = false;
+        }
+
+        if (can_jump == false)
+        {
+            // do not change animation if the player is falling
+        }
+        else if (Input.GetButtonDown("Jump")) // play the jump animation if the player is jumping
+        {
+            animation_controller.SetTrigger("jumpTrigger");
+        }
+        else if (is_moving)
+        {
+            animation_controller.SetBool("walking", true);
+        }
+        else if (!is_moving)
+        {
+            animation_controller.SetBool("walking", false);
+        }
+
+        if(Input.GetButtonDown("Tongue"))
+        {
+            animation_controller.SetTrigger("tongueTrigger");
+            if(Physics.Raycast(transform.position, transform.forward, tongue_length))
+            {
+                print("hit");
+                // now I need to check that it's a fly
+            }
         }
     }
 
